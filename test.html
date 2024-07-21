@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .question {
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .arrow-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .answer-visible .arrow-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+    <title>Questions et Réponses</title>
+</head>
+
+<body>
+
+    <div class="faq-item">
+        <div class="question" onclick="toggleAnswer('answer1', this)">
+            Question 1: Qu'est-ce que HTML?
+            <span class="arrow-icon">▼</span>
+        </div>
+        <div class="answer" id="answer1">HTML (HyperText Markup Language) est le langage standard pour créer des pages web. Il définit la structure de la page à l'aide de balises.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question" onclick="toggleAnswer('answer2', this)">
+            Question 2: Comment styliser une page web?
+            <span class="arrow-icon">▼</span>
+        </div>
+        <div class="answer" id="answer2">Vous pouvez styliser une page web en utilisant du CSS (Cascading Style Sheets). Il permet de définir le style, la mise en page et l'apparence de votre site.</div>
+    </div>
+
+    <!-- Ajoutez plus de paires question-réponse si nécessaire -->
+
+    <script>
+        function toggleAnswer(answerId, question) {
+            var answer = document.getElementById(answerId);
+            answer.classList.toggle("answer-visible");
+            question.classList.toggle("answer-visible");
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
